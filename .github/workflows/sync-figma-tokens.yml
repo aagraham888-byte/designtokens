@@ -11,20 +11,25 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
       - name: Create tokens directory
         run: mkdir -p tokens
 
-      - name: Fetch Figma Styles
+      - name: Fetch Figma File
         run: |
           curl -s -H "X-Figma-Token: ${{ secrets.FIGMA_TOKEN }}" \
-            "https://api.figma.com/v1/files/${{ secrets.FIGMA_FILE_KEY }}/styles" \
-            -o tokens/figma-styles.json
+            "https://api.figma.com/v1/files/${{ secrets.FIGMA_FILE_KEY }}" \
+            -o tokens/figma-file.json
 
-      - name: Fetch Figma Variables
-        run: |
-          curl -s -H "X-Figma-Token: ${{ secrets.FIGMA_TOKEN }}" \
-            "https://api.figma.com/v1/files/${{ secrets.FIGMA_FILE_KEY }}/variables/local" \
-            -o tokens/figma-variables.json
+      - name: Generate CSS tokens
+        run: node scripts/generate-tokens.js
+
+      - name: Clean up old token files
+        run: rm -f tokens/figma-styles.json tokens/figma-variables.json
 
       - name: Commit & Push
         run: |
