@@ -1,1 +1,1 @@
-{"status":403,"error":true,"message":"Invalid scope(s): file_content:read, file_metadata:read, library_assets:read, library_content:read, team_library_content:read. This endpoint requires the file_variables:read scope"}
+{"status":403,"error":true,"message":"Invalid scope(s): library_assets:read, library_content:read, file_content:read, file_metadata:read. This endpoint requires the file_variables:read scope"}
