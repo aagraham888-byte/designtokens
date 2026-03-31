@@ -1,0 +1,34 @@
+name: Sync Figma Tokens
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 9 * * 1-5'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create tokens directory
+        run: mkdir -p tokens
+
+      - name: Fetch Figma Styles
+        run: |
+          curl -s -H "X-Figma-Token: ${{ secrets.FIGMA_TOKEN }}" \
+            "https://api.figma.com/v1/files/${{ secrets.FIGMA_FILE_KEY }}/styles" \
+            -o tokens/figma-styles.json
+
+      - name: Fetch Figma Variables
+        run: |
+          curl -s -H "X-Figma-Token: ${{ secrets.FIGMA_TOKEN }}" \
+            "https://api.figma.com/v1/files/${{ secrets.FIGMA_FILE_KEY }}/variables/local" \
+            -o tokens/figma-variables.json
+
+      - name: Commit & Push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add tokens/
+          git diff --cached --quiet || (git commit -m "🎨 Sync Figma tokens" && git push)
