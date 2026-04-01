@@ -1,4 +1,3 @@
-import { Link } from "router";
 import { Crown, Zap, Gift, Heart, Shield, BadgeCheck } from "lucide-react";
 import { Button } from "../components/ui/button";
 
