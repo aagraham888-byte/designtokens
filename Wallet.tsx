@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import { Plus, ArrowUpRight, ArrowDownLeft, CreditCard, DollarSign, Gift, Clock } from "lucide-react";
-import { Button } from "../components/ui/button";
-import { ProfileSidebar } from "../components/ProfileSidebar";
+import { Button } from "src/app/components/ui/button";
+import { ProfileSidebar } from "src/app/components/ProfileSidebar";
 
 export function WalletPage() {
   const transactions = [
