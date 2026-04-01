@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { Plus, ArrowUpRight, ArrowDownLeft, CreditCard, DollarSign, Gift, Clock } from "lucide-react";
+import { Plus, ArrowUpRight, ArrowDownLeft, ArrowDownRight, CreditCard, DollarSign, Gift, Clock, Wallet } from "lucide-react";
 import { Button } from "src/app/components/ui/button";
 import { ProfileSidebar } from "src/app/components/ProfileSidebar";
 
