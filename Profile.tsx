@@ -1,8 +1,16 @@
+import React from "react";
 import { Link } from "react-router";
 import { Ticket, Clock, Eye, CreditCard, Wallet, Plus, Crown, Settings } from "lucide-react";
-import { Button } from "../components/ui/button";
-import { ProfileSidebar } from "../components/ProfileSidebar";
 
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
+
+function Button(props: ButtonProps) {
+  return <button {...props} />;
+}
+
+function ProfileSidebar() {
+  return null;
+}
 export function Profile() {
   const userName = "ameerah.graham";
   
