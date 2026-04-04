@@ -26,7 +26,7 @@ jobs:
             -o tokens/figma-file.json
 
       - name: Generate CSS tokens
-        run: node scripts/generate-tokens.js
+        run: node scripts/generate-tokens.cjs
 
       - name: Clean up old token files
         run: rm -f tokens/figma-styles.json tokens/figma-variables.json
